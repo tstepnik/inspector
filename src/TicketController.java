@@ -21,6 +21,8 @@ public class TicketController {
         ticketMachine.buyTicket(person1, LocalDateTime.of(date, time1), Duration.ofMinutes(20));
         ticketMachine.buyTicket(person2, LocalDateTime.of(date, time2), Duration.ofMinutes(20));
         ticketMachine.buyTicket(person3, LocalDateTime.of(date, time3), Duration.ofMinutes(20));
+        ticketMachine.buyTicket(person4, LocalDateTime.of(date, LocalTime.of(17, 30)),
+                Duration.ofMinutes(50));
 
         passengers.add(person1);
         passengers.add(person2);
@@ -35,7 +37,7 @@ public class TicketController {
     private static List<Passenger> passengersWithoutTicket(List<Passenger> passengers) {
         List<Passenger> passengersWithoutTicket = new ArrayList<>();
         passengers.forEach(passenger -> {
-            if  ( passenger.
+            if (!passenger.haveTicket() || passenger.
                     ticketIsExpired(LocalDateTime.of(2020, 02, 17, 18, 45))) {
                 passengersWithoutTicket.add(passenger);
             }
